@@ -1,7 +1,9 @@
-import PrimaryButton from "../components/buttons/PrimaryButton";
 import HoldingsCard from "../components/cards/HoldingsCard";
 import { tierbg1, tierbg2 } from "../assets";
 import TierCard from "../components/cards/TierCard";
+
+
+
 
 const TierInfo = [
   {
@@ -48,7 +50,9 @@ const Dashboard = () => {
           <div className="flex    text-yellow-400 text-2xl font-bold items-center space-x-6">
             <span>2.72$</span>
             <span>
-              <PrimaryButton buttonText="Claim" width="80px" />
+              <button className=" bg-gradient-to-r from-lime-400 to-amber-500 rounded-[46px] hover:opacity-60 w-[75px]">
+                <span className="text-white text-base font-medium">Claim</span>
+              </button>
             </span>
           </div>
         </HoldingsCard>
@@ -72,9 +76,11 @@ const Dashboard = () => {
         </span>
       </section>
 
-      <section>
-        
-
+      <section className="flex items-center">
+        <div>
+       
+        </div>
+        <div></div>
       </section>
     </div>
   );

@@ -98,9 +98,9 @@ const SideNav = () => {
 
   return (
     <aside className="fixed top-0 left-0 z-40 w-[22rem] h-screen border-r border-zinc-300/30  flex flex-col items-center justify-center">
-      <div className=" flex flex-col items-center justify-around min-h-[75vh]  p-5 mx-6 space-y-8">
+      <div className=" flex flex-col items-center justify-around min-h-[75vh]  p-5 mx-6 space-y-6 ">
         <span>
-          <img src={safeYieldsLogo} alt="" className="w-[180px] "/>
+          <img src={safeYieldsLogo} alt="" className="w-[180px] " />
         </span>
 
         <ul className="flex flex-col space-y-1">
@@ -140,13 +140,13 @@ const SideNav = () => {
           ))}
         </ul>
 
-        <div className="w-[46px] h-[46px]  flex items-center justify-center rounded-full bg-[#D9E021] self-start ms-4">
+        <div className="w-[46px] h-[46px]  flex items-center justify-center rounded-full bg-[#D9E021] self-start ms-4 ">
           <span className="text-black">
             <FaArrowLeftLong size="1.5rem" />
           </span>
         </div>
 
-        <div className="flex ">
+        <div className="flex  ">
           <div className="w-[46px] h-[46px]  flex items-center justify-center rounded-full bg-[#F28705]  ms-4">
             <span className="text-white">
               <FaDiscord size="1.5rem" />
