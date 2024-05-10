@@ -28,7 +28,7 @@ const CommentSection = () => {
             accumsan venenatis arcu elementum dis. Sapien mollis praesent
             eleifend vitae sit id iaculis amet. Bibendum massa enim mauris elit
             donec in sit tempus. Libero adipiscing a at volutpat et enim non
-            sagittis nam. Mattis scelerisque non velit malesuada aenean.
+            sagittis nam. Mattis scelerisque non velit malesuada aenean ut.
           </p>
 
           <div className="text-white text-sm font-medium flex space-x-2 items-center">

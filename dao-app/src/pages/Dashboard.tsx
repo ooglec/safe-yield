@@ -1,41 +1,41 @@
 import HoldingsCard from "../components/cards/HoldingsCard";
-import { tierbg1, tierbg2 } from "../assets";
 import TierCard from "../components/cards/TierCard";
+import { Line } from "react-chartjs-2";
+import { graph_data1, graph_data2 } from "../data/chartData";
+import { options } from "../data/chartData";
+import { TierInfo } from "../data/TierInformation";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from "chart.js";
+import PrimaryButton from "../components/buttons/PrimaryButton";
+
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement
+);
 
 
 
 
-const TierInfo = [
-  {
-    tierNo: 1,
-    percentageOwnership: 0.00625,
-    nftCount: 2,
-    bgImage: tierbg1,
-  },
-  {
-    tierNo: 2,
-    percentageOwnership: 0.0125,
-    nftCount: 0,
-    bgImage: tierbg2,
-  },
-  {
-    tierNo: 3,
-    percentageOwnership: 0.025,
-    nftCount: 1,
-    bgImage: tierbg1,
-  },
-  {
-    tierNo: 4,
-    percentageOwnership: 0.05,
-    nftCount: 0,
-    bgImage: tierbg2,
-  },
-];
 
 const Dashboard = () => {
+
+  
   return (
-    <div className="mt-16 w-[75vw] h-[80vh]  flex flex-col space-y-8 justify-start pt-6 items-center ">
-      <section className="flex space-x-4 ">
+    <div className="mt-16 w-[72vw] h-[80vh]  flex flex-col space-y-6 justify-start pt-6 items-center  ">
+      <section className="flex space-x-6 ">
         <HoldingsCard cardTitle="SAFE Holdings" amount={36.81}>
           <div className="text-yellow-400 text-2xl font-bold ">
             <span>36.20 SAFE</span>
@@ -58,8 +58,8 @@ const Dashboard = () => {
         </HoldingsCard>
       </section>
 
-      <section className="flex flex-col space-y-4 justify-center items-center ">
-        <div className="flex space-x-2">
+      <section className="flex flex-col space-y-2 justify-center items-center ">
+        <div className="flex space-x-4">
           {TierInfo.map((item, index) => (
             <TierCard
               key={index}
@@ -71,16 +71,24 @@ const Dashboard = () => {
           ))}
         </div>
 
-        <span className="text-neutral-100 text-[13px] font-light">
+        <span className="text-neutral-100 text-[13px] font-light pt-2">
           Total Protocol Ownership: 3.34%
         </span>
       </section>
 
-      <section className="flex items-center">
-        <div>
-       
+      <section className="flex items-center space-x-6  ">
+        <div className=" p-3  w-[423px] h-[265px] bg-gradient-to-b from-stone-200/35 to-stone-200/20 rounded-[21px] flex flex-col  items-center">
+          <Line data={graph_data1} options={options} />
+          <button className="">
+            <PrimaryButton buttonText="Buy SAFE" width="120px" />{" "}
+          </button>
         </div>
-        <div></div>
+        <div className="p-3  w-[423px] h-[265px] bg-gradient-to-b from-stone-200/35 to-stone-200/20 rounded-[21px] flex flex-col  items-center ">
+          <Line data={graph_data2} options={options} />
+          <button className="">
+            <PrimaryButton buttonText="Buy NFT" width="120px" />{" "}
+          </button>
+        </div>
       </section>
     </div>
   );

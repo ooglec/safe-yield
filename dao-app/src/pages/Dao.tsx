@@ -23,7 +23,7 @@ const voteItems = [
 
 const Dao = () => {
   return (
-    <section className="mt-16 w-[75vw] h-[80vh]  flex flex-col space-y-10 justify-start pt-10 items-center">
+    <section className="mt-16 w-[72vw] h-[80vh]  flex flex-col space-y-10 justify-start pt-10 items-center ">
       <div className="  w-[65vw] flex flex-col   space-y-2  ">
         <div className="border-b  border-zinc-300/50  font-medium text-end pr-[3.5rem] p-2 ">
           Status

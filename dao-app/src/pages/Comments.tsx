@@ -6,8 +6,8 @@ import CommentSection from "../components/comments/CommentSection";
 
 const Comments = () => {
   return (
-    <div className="mt-16 w-[68vw] h-[80vh]  flex flex-col space-y-10 justify-start pt-10 items-center    ">
-      <section className="flex flex-col md:flex-row  justify-between  ">
+    <div className="mt-16 w-[68vw] h-[80vh]  flex flex-col space-y-10 justify-start pt-10 items-center     ">
+      <section className="flex flex-col md:flex-row  justify-between   ">
         <div className=" w-[60%]">
           <CommentSection />
         </div>
