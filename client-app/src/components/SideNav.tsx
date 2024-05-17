@@ -1,7 +1,7 @@
 
 
 import { Link, useLocation } from "react-router-dom";
-import { FaArrowLeftLong, FaGithub, FaX, FaYoutube } from "react-icons/fa6";
+import { FaArrowLeftLong, FaGithub, FaYoutube } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { botIcon, dashboardIcon, documentIcon, homeIcon, logo } from "../assets";

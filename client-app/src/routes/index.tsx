@@ -13,6 +13,7 @@ const AppRoutes = () => (
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="emma-ai" element={<EmmaAI />} />
         <Route path="buy-safe" element={<BuySafe />} />
+         {/* <Route path="buy-safe/:referer" element={<BuySafe />} /> */}
       </Route>
     </Routes>
   </>
