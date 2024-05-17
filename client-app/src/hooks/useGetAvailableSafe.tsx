@@ -12,13 +12,14 @@ const useGetAvailableSafe = (address: string, txUpdate: number) => {
     const [totalSold, setTotalSold] = useState(0);
     const [tokenPrice, setTokenPrice] = useState(0);
 
-    const provider = new BrowserProvider(walletProvider!);
+    
 
     useEffect(() => {
         if (!walletProvider || !address) return;
     
         const getBalances = async () => {
-            const SAFE_CONTRACT_ = SAFE_CONTRACT.connect(provider) as Contract;
+            try {
+                const SAFE_CONTRACT_ = SAFE_CONTRACT.connect(provider) as Contract;
             const safeBalance_ = await SAFE_CONTRACT_.investorAllocations(address);
             const totalSold_ = await SAFE_CONTRACT_.totalSold();
             const tokenPrice_ = await SAFE_CONTRACT_.tokenPrice();
@@ -28,6 +29,9 @@ const useGetAvailableSafe = (address: string, txUpdate: number) => {
             setTokenPrice(parseFloat(ethers.formatEther(tokenPrice_)));
 
             console.log(totalSold, tokenPrice, stakedSafe);
+           }catch(err){
+               console.log(err)
+           }
         };
 
         getBalances();
