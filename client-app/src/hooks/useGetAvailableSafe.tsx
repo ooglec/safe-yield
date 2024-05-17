@@ -18,6 +18,7 @@ const useGetAvailableSafe = (address: string, txUpdate: number) => {
         if (!walletProvider || !address) return;
     
         const getBalances = async () => {
+            const provider = new BrowserProvider(walletProvider);
             try {
                 const SAFE_CONTRACT_ = SAFE_CONTRACT.connect(provider) as Contract;
             const safeBalance_ = await SAFE_CONTRACT_.investorAllocations(address);
