@@ -51,12 +51,14 @@ const BuySafe = () => {
 
     if (allowance < formattedAmount) {
       //@ts-ignore
-      await USDC_CONTRACT.connect(signer).approve(SAFE_PRESALE_ADDRESS, formattedAmount)
+      const tx = await USDC_CONTRACT.connect(signer).approve(SAFE_PRESALE_ADDRESS, formattedAmount)
+      await tx.wait()
     }
-    const referer = ethers.randomBytes(32)
+    const referer = "0x0000000000000000000000000000000000000000000000000000000000000000"
     try {
       //@ts-ignore
-        await SAFE_CONTRACT.connect(signer).deposit(address!, formattedAmount, referer)
+      const tx1 = await SAFE_CONTRACT.connect(signer).deposit(address!, formattedAmount, referer)
+      await tx1.wait()
         setTxUpdate(txUpdate + 1)
         alert('Transaction successful')
         return
@@ -91,6 +93,10 @@ const BuySafe = () => {
           <span className='text-white'>You will get</span>
           <span className='text-[#4CFAC7]'>{amount * tokenPrice || 0} $SAFE</span>
         </div>
+         <div className='flex gap-3 justify-center w-full'>
+          <span className='text-white'>You currently have</span>
+          <span className='text-[#4CFAC7]'>{stakedSafe || 0} $SAFE</span>
+        </div>
         {
           isConnected ?  <button onClick={() => buySafe(amount) } className='bg-[#9999FF] rounded-full text-white flex items-center justify-center w-[13rem]'>Buy $Safe</button> : <ConnectButton />
        }
@@ -101,7 +107,7 @@ const BuySafe = () => {
           <div style={{ width: `${(totalSold/2000000)*100}%` }} className={`w-[${width}%] h-full rounded-full bg-[#4CFAC7]`}></div>
         </div>
         <div className='flex justify-between w-full text-sm'>
-          <span className='text-white'>${} $SAFE</span>
+          <span className='text-white'>${totalSold} $SAFE</span>
           <span className='text-[#4CFAC7]'>2M $SAFE</span>
         </div>
       </div>
