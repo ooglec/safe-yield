@@ -1,8 +1,8 @@
 import { Contract } from "ethers";
 
-export const USDC_ADDRESS = "0x7E0a8A4622F067336c4F9c550ffD00C70c0F2f2F";
+export const USDC_ADDRESS = "0x5461e6025f1C682790442cdb01551B8844E96494";
 export const SAFE_PRESALE_ADDRESS =
-  "0xf5835664ee25Bc394800Ca1d04D424CeEC1Eb571";
+  "0x7bDDC4ED93E922Ea0aC38D6db24D80ac77649E70";
 
 const USDC_ABI = [
   "function approve(address spender, uint256 amount) external returns (bool)",
