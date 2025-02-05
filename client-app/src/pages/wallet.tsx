@@ -23,6 +23,8 @@ export default function Wallet() {
         amountBigint: 0n,
     })
 
+    const [selectedTab, setSelectedTab] = useState<"withdraw" | "deposit">("withdraw")
+
     const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let input = e.target.value
 
@@ -36,36 +38,6 @@ export default function Wallet() {
         setAmounts({ amountFormatted, amountBigint })
     }
 
-    const handleApproval = async () => {
-        //@M3g4m1nd3r screen loading, if used, can be turned on here
-        if (!address || !signer) {
-            //@M3g4m1nd3r add error message to user to connect wallet
-            return
-        }
-        if (amounts.amountBigint === 0n) {
-            //@M3g4m1nd3r add error message to user to enter amount
-            return
-        }
-        const allowance = await getAllowance(usdc, address, await emmaVault.getAddress())
-
-        if (allowance < amounts.amountBigint) {
-            try {
-                const txHash = await approveSpending(usdc, await emmaVault.getAddress(), amounts.amountBigint)
-                console.log("approval hash: ", txHash)
-                //@M3g4m1nd3r add toast message to user
-            } catch (error) {
-                console.error("error approving spending: ", error)
-            } finally {
-                setAmounts({
-                    amountFormatted: "0",
-                    amountBigint: 0n,
-                })
-
-                //@M3g4m1nd3r screen loading, if used, can be turned off here
-            }
-        }
-    }
-
     const handleEmmaVaultDeposit = async () => {
         //@M3g4m1nd3r screen loading, if used, can be turned on here
         if (!address) {
@@ -75,6 +47,21 @@ export default function Wallet() {
         if (amounts.amountBigint === 0n) {
             //@M3g4m1nd3r add error message to user to enter amount
             return
+        }
+
+        const allowance = await getAllowance(usdc, address, await emmaVault.getAddress())
+
+        if (allowance < amounts.amountBigint) {
+            try {
+                const txHash = await approveSpending(usdc, await emmaVault.getAddress(), amounts.amountBigint)
+                console.log("approval hash: ", txHash)
+                //@M3g4m1nd3r add toast message to user
+            } catch (error) {
+                console.error("error approving spending: ", error)
+
+                //@M3g4m1nd3r add toast to show approval failed
+                return
+            }
         }
 
         try {
@@ -165,8 +152,12 @@ export default function Wallet() {
         <div className="flex items-center justify-center flex-grow">
             <Tabs defaultValue="withdraw" className="w-[400px]">
                 <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="withdraw">Withdraw</TabsTrigger>
-                    <TabsTrigger value="deposit">Deposit</TabsTrigger>
+                    <TabsTrigger onClick={() => setSelectedTab("withdraw")} value="withdraw">
+                        Withdraw
+                    </TabsTrigger>
+                    <TabsTrigger onClick={() => setSelectedTab("deposit")} value="deposit">
+                        Deposit
+                    </TabsTrigger>
                 </TabsList>
                 <TabsContent value="withdraw">
                     <Card>
@@ -181,8 +172,8 @@ export default function Wallet() {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button onClick={handleApproval} className="w-full">
-                                Approve
+                            <Button onClick={handleEmmaVaultWithdraw} className="w-full">
+                                Withdraw
                             </Button>
                         </CardFooter>
                     </Card>
