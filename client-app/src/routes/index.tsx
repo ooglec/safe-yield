@@ -4,6 +4,7 @@ import Website from "../pages/website";
 import BuySafe from "../pages/buySafe";
 import Dashboard from "../pages/dashboard";
 import EmmaAI from "../pages/emmaAi";
+import Wallet from "@/pages/wallet";
 
 const AppRoutes = () => (
   <>
@@ -13,6 +14,7 @@ const AppRoutes = () => (
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="emma-ai" element={<EmmaAI />} />
         <Route path="buy-safe" element={<BuySafe />} />
+        <Route path="wallet" element={<Wallet />} />
          {/* <Route path="buy-safe/:referer" element={<BuySafe />} /> */}
       </Route>
     </Routes>
