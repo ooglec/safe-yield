@@ -6,16 +6,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState } from "react"
 
 import { ethers } from "ethers"
-import { useWeb3ModalAccount } from "@web3modal/ethers/react"
 import { useSafeYieldsContract } from "@/services/blockchain/safeyields.contracts"
-// import { addresses } from "@/services/blockchain/constants/addresses"
+import useEthersSigner from "@/services/blockchain/hooks/useEthersSigner"
+import { useAccount } from "wagmi"
 import { getAllowance, approveSpending } from "@/services/blockchain/common"
 import { trimDecimalPlaces } from "@/utils/helpers"
 
 export default function Wallet() {
-    const { address } = useWeb3ModalAccount()
+    const { address } = useAccount()
+    const signer = useEthersSigner()!
 
-    const { usdc, emmaVault } = useSafeYieldsContract()
+    const { usdc, emmaVault } = useSafeYieldsContract(signer)
 
     const [amounts, setAmounts] = useState({
         amountFormatted: "0",
@@ -37,7 +38,7 @@ export default function Wallet() {
 
     const handleApproval = async () => {
         //@M3g4m1nd3r screen loading, if used, can be turned on here
-        if (!address) {
+        if (!address || !signer) {
             //@M3g4m1nd3r add error message to user to connect wallet
             return
         }
