@@ -75,10 +75,10 @@ const BuySafe = () => {
   }
 
   return (
-    <div className='text-poppins py-40'>
-      <div className='flex flex-col gap-2 mb-10'>
-        <span className='text-[#9999FF] font-bold text-2xl'>$SAFE Pre-sale is live!</span>
-        <span className='text-white/80 font-medium text-2xl'>2M $SAFE at {tokenPrice || 0}$ for a 1.10$ launch price</span>
+    <div className='text-poppins flex flex-col items-center justify-center gap-8'>
+      <div className='flex flex-col gap-2'>
+        <span className='text-[#9999FF] font-bold text-2xl leading-7 [&:not(:first-child)]:mt-6'>$SAFE Pre-sale is live!</span>
+        <span className='text-white/80 font-medium text-2xl leading-7 [&:not(:first-child)]:mt-6'>2M $SAFE at {tokenPrice || 0}$ for a 1.10$ launch price</span>
       </div> 
       <div className='flex flex-col justify-center items-center px-24 gap-6 bg-gradient-to-b from-white/20 to-white/5 mb-10 text-white rounded-xl h-[20rem] w-[35vw]'>
         <div className='w-full flex  flex-col items-center '>
