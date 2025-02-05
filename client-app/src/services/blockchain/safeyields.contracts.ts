@@ -1,14 +1,15 @@
 import { useMemo } from "react"
-import { BrowserProvider, ContractRunner } from "ethers"
+import { ContractRunner } from "ethers"
 import { addresses, SupportedChain, supportedChains } from "./constants/addresses"
-import { useWeb3ModalProvider, useWeb3ModalAccount } from "@web3modal/ethers/react"
+import { useAccount } from "wagmi"
 import { EmmaVaultAbi__factory, Erc20Abi__factory } from "./types"
+import useEthersProvider from "./hooks/useEthersProvider"
 
 export const useSafeYieldsContract = (optionalRunner?: ContractRunner) => {
-    const { chainId } = useWeb3ModalAccount()
-    const { walletProvider } = useWeb3ModalProvider()
+    const { chainId } = useAccount()
+    const provider = useEthersProvider()
 
-    const runner = optionalRunner ?? (walletProvider ? new BrowserProvider(walletProvider) : undefined)
+    const runner = optionalRunner ?? provider
 
     const validChainId = supportedChains.has(chainId ?? 0) ? (chainId as SupportedChain) : SupportedChain.Arbitrum
 
