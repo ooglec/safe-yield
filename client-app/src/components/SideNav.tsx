@@ -1,33 +1,18 @@
-import {
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  File,
-  Home,
-  LayoutDashboard,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  Settings2,
-  SquareTerminal,
-  WalletMinimal,
-} from "lucide-react"
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
-import { botIcon, dashboardIcon, documentIcon, homeIcon, logo } from "../assets";
+import {
+  Bot,
+  Home,
+  LayoutDashboard
+} from "lucide-react"
+import { logo } from "../assets"
 
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarMenuItem
 } from "@/components/ui/sidebar"
 const data = {
   navMain: [
@@ -43,7 +28,7 @@ const data = {
       icon: LayoutDashboard,
     },
     {
-      title: "Emma AI",
+      title: "Emma AI\n(Coming soon)",
       url: "#",
       icon: Bot,
       items: [
@@ -57,25 +42,25 @@ const data = {
         },
       ],
     },
-    {
+    /* {
       title: "Buy Safe",
       url: "/buy-safe",
       icon: File,
-    }    
+    }  */   
   ]
 }
 
 
 export default function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar variant="inset" {...props} className="border-r-2 border-[#D9D9D940]">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <div className="grid flex-1 text-left text-sm leading-tight">
+              <div className="grid flex-1 text-left text-sm my-10">
                 <div className="flex flex-row items-center justify-center">
-                  <img src={logo} alt="" className="w-[180px]" />
+                  <img src={logo} alt="" className="w-[180px] " />
                 </div>
 
               </div>

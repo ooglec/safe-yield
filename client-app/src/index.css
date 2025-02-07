@@ -16,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body{
-    background-image: url(background.svg);
+    background-image: url(../public/background.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
