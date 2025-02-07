@@ -25,7 +25,7 @@ function MyCustomConnectButton() {
                     return (
                         <button
                             onClick={openConnectModal}
-                            className="bg-[#4CFAC7] text-black font-bold text-base py-2 px-12 pr-20 rounded-full transform transition-transform duration-200 hover:scale-105"
+                            className="bg-[#4CFAC7] text-black font-bold text-base py-2 px-12 mr-20 rounded-full transform transition-transform duration-200 hover:scale-105"
                         >
                             Connect Wallet
                         </button>
